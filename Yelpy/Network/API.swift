@@ -13,7 +13,7 @@ struct API {
     
 
     
-    static func getRestaurants(completion: @escaping ([[String:Any]]?) -> Void) {
+    static func getRestaurants(completion: @escaping ([Restaurant]?) -> Void) {
         
         // ––––– TODO: Add your own API key!
         let apikey = "lempARqjNOqCB881mkUr63EeqylZu-xvuiMnvtZMP0A7sDB63ewCmtVU3NWzuGFvGa3uxZ8beXKLI36kGHdYIS2ubxGNMpJ-8yCwi-Io3XFtXIvUOb_zwKLz6vljYHYx"
@@ -45,8 +45,18 @@ struct API {
                 //converts json response to a dictionary
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 
-                //grab business data & convert it to an array of dictionaries for each restuarant
-                let restaurants  = dataDictionary["businesses"] as! [[String: Any]]
+                // Get array of restaurant dictionaries
+                let restDictionaries = dataDictionary["businesses"] as! [[String: Any]]
+
+                // Variable to store array of Restaurants
+                var restaurants: [Restaurant] = []
+
+                // Use each restaurant dictionary to initialize Restaurant object
+                for dictionary in restDictionaries {
+                    let restaurant = Restaurant.init(dict: dictionary)
+                    restaurants.append(restaurant) // add to restaurants array
+                }
+
                 
                 // return array of dictionaries representing restaurants
                 

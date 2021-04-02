@@ -9,16 +9,17 @@
 import UIKit
 import AlamofireImage
 
-class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
 
     // ––––– TODO: Add storyboard Items (i.e. tableView + Cell + configurations for Cell + cell outlets)
 
     // ––––– TODO: Next, place TableView outlet here
     @IBOutlet weak var tableView: UITableView!
-    // –––––– TODO: Initialize restaurantsArray
+  
+    var isMoreDataLoading = false
     
     // placeholder for storing all data from API request
-    var restaurantsArray: [[String:Any?]] = []
+    var restaurantsArray: [Restaurant] = []
     
     // ––––– TODO: Add tableView datasource + delegate
     override func viewDidLoad() {
@@ -43,35 +44,9 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
         
         let restaurant = restaurantsArray[indexPath.row]
         
-        // set restuarant label
-        cell.restaurantLabel.text = restaurant["name"] as? String ?? ""
-        
-        
-        // set image of restaurant
-        if let imageUrlString = restaurant["image_url"] as? String{
-            let imageUrl = URL(string: imageUrlString)
-            cell.restaurantImage.af.setImage(withURL: imageUrl!)
-        }
-        
-        //set ratings & ratings count
-        let reviews = restaurant["review_count"] as? Int
-        cell.ratingsCountLabel.text = String(reviews!)
-        
-        let ratings_ = restaurant["rating"] as? Float
-        
-        // set category for restaurant
-        //let category = restaurant["categories"] as? NSArray
-
-                        
-        //let category = restaurant["categories"] as! NSArray
-        
-        //let catTitle = category![0] as! String
-       // let title_ = catTitle[title] as! String
-        
-        // set phone number for restaurant
-        cell.phoneLabel.text = restaurant["display_phone"] as? String
-        
-        
+        //refactoring all this to 4 lines! Set the cell's r variable to the restaurant object from indexPath.
+        cell.r = restaurant
+       
         return cell
     }
     
@@ -86,9 +61,61 @@ class RestaurantsViewController: UIViewController, UITableViewDelegate, UITableV
             self.tableView.reloadData() //reload data
         }
     }
+//
+//    func loadMoreData() {
+//
+//        // ... Create the NSURLRequest (myRequest) ...
+//        let myRequest = URL(string: "https://api.yelp.com/v3/transactions/delivery/search?latitude=\(37.773972)&longitude=\(-122.431297)")
+//        // Configure session so that completion handler is executed on main UI thread
+//        let session = URLSession(configuration: URLSessionConfiguration.default,
+//                                delegate:nil,
+//                                delegateQueue:OperationQueue.main
+//        )
+//        let task : URLSessionDataTask = session.dataTask(with: myRequest!, completionHandler: { (data, response, error) in
+//
+//            // Update flag
+//            self.isMoreDataLoading = false
+//
+//            // ... Use the new data to update the data source ...
+//
+//            // Reload the tableView now that there is new data
+//            self.tableView.reloadData()
+//        })
+//        task.resume()
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        // Handle scroll behavior here
+//        if (!isMoreDataLoading) {
+//            // Calculate the position of one screen length before the bottom of the results
+//            let scrollViewContentHeight = tableView.contentSize.height
+//            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+//
+//            // When the user has scrolled past the threshold, start requesting
+//            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+//                isMoreDataLoading = true
+//
+//            loadMoreData()
+//        }
+//    }
+//
+//    }
 
+    // TODO: Override segue to pass the restaurant object to the DeatilsViewController
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell){
+            let r = restaurantsArray[indexPath.row]
+            let detailViewController = segue.destination as! RestaurantDetailViewController
+            detailViewController.r = r
+        }
+    }
 }
 
 // ––––– TODO: Create tableView Extension and TableView Functionality
+
+
 
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		616E7D812616D4BA0051A9D1 /* YelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616E7D802616D4BA0051A9D1 /* YelpStars.swift */; };
+		616E7D842616D6540051A9D1 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616E7D832616D6540051A9D1 /* Restaurant.swift */; };
+		616E7D872616DE290051A9D1 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616E7D862616DE290051A9D1 /* RestaurantDetailViewController.swift */; };
 		61BBCD7025E8AD8800CF4C8B /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BBCD6F25E8AD8800CF4C8B /* RestaurantCell.swift */; };
 		BB47B3AA247739640029FFF6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB47B3A9247739640029FFF6 /* API.swift */; };
 		BB47B3AF2477426A0029FFF6 /* exampleAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = BB47B3AE2477426A0029FFF6 /* exampleAPI.json */; };
@@ -22,6 +25,9 @@
 /* Begin PBXFileReference section */
 		4ED4C73FD51FDFC62216E5DE /* Pods-Yelpy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelpy.debug.xcconfig"; path = "Target Support Files/Pods-Yelpy/Pods-Yelpy.debug.xcconfig"; sourceTree = "<group>"; };
 		4F45387EF0BCD4FD0EAD369F /* Pods_Yelpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		616E7D802616D4BA0051A9D1 /* YelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpStars.swift; sourceTree = "<group>"; };
+		616E7D832616D6540051A9D1 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		616E7D862616DE290051A9D1 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 		61BBCD6F25E8AD8800CF4C8B /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		65F962A73D0A55B6E930DC45 /* Pods-Yelpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelpy.release.xcconfig"; path = "Target Support Files/Pods-Yelpy/Pods-Yelpy.release.xcconfig"; sourceTree = "<group>"; };
 		BB47B3A9247739640029FFF6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -57,6 +63,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		616E7D7E2616D4460051A9D1 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				616E7D802616D4BA0051A9D1 /* YelpStars.swift */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		616E7D7F2616D4870051A9D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				616E7D832616D6540051A9D1 /* Restaurant.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7D8BA013843B8AF0BF0FE308 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				BBEBF10F247738A50044AFE0 /* RestaurantsViewController.swift */,
+				616E7D862616DE290051A9D1 /* RestaurantDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,6 +149,8 @@
 				BB47B3B32477539A0029FFF6 /* Cells */,
 				BB47B3AC247739890029FFF6 /* Controllers */,
 				BB47B3AB247739720029FFF6 /* Network */,
+				616E7D7E2616D4460051A9D1 /* Extra */,
+				616E7D7F2616D4870051A9D1 /* Models */,
 				BB47B3AD247739F00029FFF6 /* Storyboards */,
 				BBEBF119247738A50044AFE0 /* Info.plist */,
 			);
@@ -250,7 +275,10 @@
 			files = (
 				61BBCD7025E8AD8800CF4C8B /* RestaurantCell.swift in Sources */,
 				BBEBF110247738A50044AFE0 /* RestaurantsViewController.swift in Sources */,
+				616E7D872616DE290051A9D1 /* RestaurantDetailViewController.swift in Sources */,
 				BB47B3AA247739640029FFF6 /* API.swift in Sources */,
+				616E7D842616D6540051A9D1 /* Restaurant.swift in Sources */,
+				616E7D812616D4BA0051A9D1 /* YelpStars.swift in Sources */,
 				BBEBF10C247738A50044AFE0 /* AppDelegate.swift in Sources */,
 				BBEBF10E247738A50044AFE0 /* SceneDelegate.swift in Sources */,
 			);
